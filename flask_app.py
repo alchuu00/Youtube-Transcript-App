@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 def get_youtube_transcription(url):
     video_id = url.replace("https://www.youtube.com/watch?v=", "")
-    YouTubeTranscriptApi.get_transcript(video_id, proxies={"https": "https://proxy.server:3128"})
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
         output = ' '.join([sentence['text'] for sentence in transcript])
